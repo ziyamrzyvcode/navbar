@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="D:\tecrube\js\navbar.js"></script>
+    <link rel="stylesheet" href="D:\tecrube\css\navbar.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+<body>
+    <nav>
+        <div class="nav-item dropdown">
+            <img class="logo" src="D:\tecrube\img\logo.svg" alt="logo">
+            <div class="dropdown-item">
+                <a href="">HolidayHomes</a>
+                <a href="">List Your Home</a>
+                <a href="">EN/$</a>
+                <a href="">WishList</a>
+            </div>
+        </div>
+        
+
+        <div class="nav-item search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Enter city or region">
+
+        </div>
+        <div class="nav-item date-picker">
+            <div class="date-picker-calendar">
+                <input type="date" id="departure-date" placeholder="Start">
+                <input type="date" id="return-date" placeholder="Finish">
+            </div> 
+        </div>
+        
+        <div class="nav-item dropdown1">
+            <i class="fa-regular fa-user"></i>
+            <Button class="drpbutton">Guests</Button>
+            <div class="guests">
+                <h3>Guests</h3>
+                <div class="guests-info">
+                        <div class="guests-info-adult-name item1">
+                            <i class="fa-regular fa-user"></i>
+                            <div class="guests-info-adult-name-word">
+                                <span>Adults</span> <br>
+                                <span>Ages 18 or above</span>
+                            </div>
+                        </div>
+                        <div class="guests-info-adult-counter item2">
+                            <button class="minus-button" onclick="decreaseCounter1()"><i class="fa-solid fa-minus"></i></button>
+                            <div id="counter-display1">0</div>
+                            <button class="plus-button" onclick="increaseCounter1()"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                        <div class="guests-info-children-name item3">
+                            <i class="fa-solid fa-baby"></i>
+                            <div class="guests-info-children-name-word">
+                                <span>Children</span> <br>
+                                <span>Ages 0-18</span>
+                            </div>
+                        </div>
+                        <div class="guests-info-children-counter item4">
+                            <button class="minus-button" onclick="decreaseCounter2()"><i class="fa-solid fa-minus"></i></button>
+                            <div id="counter-display2">0</div>
+                            <button class="plus-button" onclick="increaseCounter2()"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    <div class="guests-info-checkbox">
+                        <label class="checkbox-container">Pets allowed
+                            <input type="checkbox" checked="checked">
+                            <span class="checkmark"></span>
+                          </label>
+                    </div>
+                </div>
+                <div class="guests-button">
+                    <button class="white-button cancel-button" style="display: none;">Cancel</button>
+                    <button class="blue-button close-button">Close</button>
+                    <button class="blue-button apply-button" style="display: none;">Apply</button>
+                </div>
+            </div>
+        </div>
+        <div class="filter nav-item">
+            <i class="fa-solid fa-sliders"></i>
+            <Button id="myBtn" class="drpbutton">Filter & sort</Button>
+
+            
+
+        </div>
+    </nav>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content" style="width: 700px;">
+    <span class="close">&times;</span>
+    <div class="filter">
+        <div class="filter-banner">
+        </div>
+        <div class="filter-main ">
+            <div class="filter-main-first" style="border-bottom: 1px solid rgb(213, 209, 209);">
+                <span>Filters</span>
+            </div>
+            <div class="filter-main-guests-and-rooms">
+                <h4>Guests and rooms</h4>
+                <div class="guests-and-rooms">
+                            <div class="guests-and-rooms-adults-word item1">
+                                <i class="fa-regular fa-user"></i>
+                                <div class="guests-and-rooms-adult-words">
+                                    <span>Adults</span> <br>
+                                    <span>Ages 18 or above</span>
+                                </div>
+                            </div>
+                            <div class="guests-and-rooms-adults-counter item2">
+                                <button class="minus-button" onclick="decreaseCounter1()"><i class="fa-solid fa-minus"></i></button>
+                                <div id="counter-display1">0</div>
+                                <button class="plus-button" onclick="increaseCounter1()"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                            <div class="guests-and-rooms-bedrooms-word item3">
+                                <i class="fa-solid fa-bed"></i>
+                                <div class="guests-and-rooms-bedrooms-words">
+                                    <span>Bedrooms</span>
+                                </div>
+                            </div>
+                            <div class="guests-and-rooms-bedrooms-counter item4">
+                                <button class="minus-button" onclick="decreaseCounter1()"><i class="fa-solid fa-minus"></i></button>
+                                <div id="counter-display2">0</div>
+                                <button class="plus-button" onclick="increaseCounter1()"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                            <div class="guests-and-rooms-children-word item5" >
+                                <i class="fa-solid fa-baby"></i>
+                                <div class="guests-and-roomschildren-words">
+                                    <span>Adults</span> <br>
+                                    <span>Ages 18 or above</span>
+                                </div>
+                            </div>
+                            <div class="guests-and-rooms-children-counter item6">
+                                <button class="minus-button" onclick="decreaseCounter1()"><i class="fa-solid fa-minus"></i></button>
+                                <div id="counter-display3">0</div>
+                                <button class="plus-button" onclick="increaseCounter1()"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                            <div class="guests-and-rooms-bathrooms-word item7">
+                                <i class="fa-solid fa-bath"></i>
+                                <div class="guests-and-rooms-bathrooms-words">
+                                    <span>Bedrooms</span>
+                                </div>
+                            </div>
+                            <div class="guests-and-rooms-bathrooms-counter item8">
+                                <button class="minus-button" onclick="decreaseCounter1()"><i class="fa-solid fa-minus"></i></button>
+                                <div id="counter-display4">1</div>
+                                <button class="plus-button" onclick="increaseCounter1()"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                </div>
+            </div>
+            <div class="price container" style="border-bottom: 1px solid rgb(213, 209, 209);">
+              <div slider id="slider-distance">
+                <div>
+                  <div inverse-left style="width:70%;"></div>
+                  <div inverse-right style="width:70%;"></div>
+                  <div range style="left:30%;right:40%;"></div>
+                  <span thumb style="left:30%;"></span>
+                  <span thumb style="left:60%;"></span>
+                  <div sign style="left:30%;">
+                    <span id="value">30</span>
+                  </div>
+                  <div sign style="left:60%;">
+                    <span id="value">60</span>
+                  </div>
+                </div>
+                <input type="range" tabindex="0" value="30" max="100" min="0" step="1" oninput="
+                this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
+                var value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
+                var children = this.parentNode.childNodes[1].childNodes;
+                children[1].style.width=value+'%';
+                children[5].style.left=value+'%';
+                children[7].style.left=value+'%';children[11].style.left=value+'%';
+                children[11].childNodes[1].innerHTML=this.value;" />
+              
+                <input type="range" tabindex="0" value="60" max="100" min="0" step="1" oninput="
+                this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
+                var value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
+                var children = this.parentNode.childNodes[1].childNodes;
+                children[3].style.width=(100-value)+'%';
+                children[5].style.right=(100-value)+'%';
+                children[9].style.left=value+'%';children[13].style.left=value+'%';
+                children[13].childNodes[1].innerHTML=this.value;" />
+              </div>
+            </div>
+            <div class="Amenities" style="border-bottom: 1px solid rgb(213, 209, 209);">
+              <h4>Price</h4>
+                <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-check">
+                          <input class="form-check-input custom-checkbox " type="checkbox" value="" id="checkbox1">
+                          <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                            Pool
+                          </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              WiFi
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Pet-friendly
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Kitchen
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Air condition
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              TV
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Washing machine
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Hot tub
+                            </label>
+                          </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Parking
+                            </label>
+                          </div>
+                          <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Checkbox 1
+                            </label>
+                          </div>
+                          <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                                Checkbox 1
+                              </label>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="Accomodation" style="border-bottom: 1px solid rgb(213, 209, 209);">
+              <h4>Amenities</h4>
+              <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                        <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                          Checkbox 1
+                        </label>
+                      </div>
+                      <div class="form-check">
+                          <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                          <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                            Checkbox 1
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                          <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                            Checkbox 1
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                          <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                            Checkbox 1
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                          <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                            Checkbox 1
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                          <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                          <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                            Checkbox 1
+                          </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Checkbox 1
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Checkbox 1
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Checkbox 1
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Checkbox 1
+                            </label>
+                          </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                          <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                          <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                            Checkbox 1
+                          </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Checkbox 1
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Checkbox 1
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                              Checkbox 1
+                            </label>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <div class="Booking-conditions container" style="border-bottom: 1px solid rgb(213, 209, 209);">
+            <h4>Accommodation types</h4>
+            <div class="form-check">
+              <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+              <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+                Checkbox 1
+              </label>
+            </div>
+          </div>
+          <div class="Ratings" style="border-bottom: 1px solid rgb(213, 209, 209);">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input custom-radio" type="radio" name="exampleRadios" id="radio1" value="option1">
+                            <label class="form-check-label" for="radio1" style="font-size: 20px;">
+                                Radio 1
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input custom-radio" type="radio" name="exampleRadios" id="radio2" value="option2">
+                            <label class="form-check-label" for="radio2" style="font-size: 20px;">
+                                Radio 2
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input custom-radio" type="radio" name="exampleRadios" id="radio3" value="option3">
+                            <label class="form-check-label" for="radio3" style="font-size: 20px;">
+                                Radio 3
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Location container" style="border-bottom: 1px solid rgb(213, 209, 209);">
+          <h4>Booking conditions</h4>
+          <div class="form-check">
+            <input class="form-check-input custom-checkbox" type="checkbox" value="" id="checkbox1">
+            <label class="form-check-label" for="checkbox1" style="font-size: 20px;">
+              Checkbox 1
+            </label>
+          </div>
+        </div>
+        <div class="distance-to-water container" style="border-bottom: 1px solid rgb(213, 209, 209);">
+          <h4>Ratings</h4>
+          <div class="">
+              <div class="row">
+                  <div class="col">
+                      <div class="form-check">
+                          <input class="form-check-input custom-radio" type="radio" name="exampleRadios" id="radio1" value="option1">
+                          <label class="form-check-label" for="radio1" style="font-size: 20px;">
+                              Radio 1
+                          </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input custom-radio" type="radio" name="exampleRadios" id="radio1" value="option1">
+                        <label class="form-check-label" for="radio1" style="font-size: 20px;">
+                            Radio 1
+                        </label>
+                    </div>
+                  </div>
+                  <div class="col">
+                      <div class="form-check">
+                          <input class="form-check-input custom-radio" type="radio" name="exampleRadios" id="radio2" value="option2">
+                          <label class="form-check-label" for="radio2" style="font-size: 20px;">
+                              Radio 2
+                          </label>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="form-check">
+                          <input class="form-check-input custom-radio" type="radio" name="exampleRadios" id="radio3" value="option3">
+                          <label class="form-check-label" for="radio3" style="font-size: 20px;">
+                              Radio 3
+                          </label>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="Sort-by container" >
+        <div class="">
+          <h4>Sory by</h4>
+            <div class="row">
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input custom-radio" type="radio" name="exampleRadios" id="radio1" value="option1">
+                        <label class="form-check-label" for="radio1" style="font-size: 20px;">
+                            Radio 1
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input custom-radio" type="radio" name="exampleRadios" id="radio2" value="option2">
+                        <label class="form-check-label" for="radio2" style="font-size: 20px;">
+                            Radio 2
+                        </label>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+        <br><br><br>
+        <button class="app-button">Apply</button>
+
+    </div>
+        
+        </div>
+        <div class="filter-footer">
+                              
+        </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+    
+</body>
+</html>
